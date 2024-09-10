@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>laba-1-4</title>
+</head>
+<script>
+    class NewClass {
+        constructor(title, url) {
+            this.title = title;
+            this.url = url;
+        }
+
+        show() {
+            document.write(`Title: ${this.title}<br>URL: <a href="${this.url}" target="_blank">${this.url}</a><br>`);
+        }
+    }
+
+    function showNewClass() {
+        const cls = new NewClass("My Website", "https://Website.com");
+        cls.show();
+    }
+</script>
+</head>
+<body>
+    <button onclick="showNewClass()">Test</button>
+</body>
+</html>
