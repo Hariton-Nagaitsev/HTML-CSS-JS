@@ -23,25 +23,29 @@
 </table>
 
 <script>
-    let tableHTML = '<thead><tr><th></th>';
+    (function() {
+        'use strict';
 
-    for (let j = 1; j <= 10; j++) {
-        tableHTML += '<th>' + j + '</th>';
-    }
-    tableHTML += '</tr></thead>';
-
-    tableHTML += '<tbody>';
-    for (let i = 1; i <= 10; i++) {
-        tableHTML += '<tr><th>' + i + '</th>';
+        let tableHTML = '<thead><tr><th></th>';
 
         for (let j = 1; j <= 10; j++) {
-            tableHTML += '<td>' + (i * j) + '</td>';
+            tableHTML += '<th>' + j + '</th>';
         }
-        tableHTML += '</tr>';
-    }
-    tableHTML += '</tbody>';
+        tableHTML += '</tr></thead>';
 
-    document.getElementById('mult').innerHTML = tableHTML;
+        tableHTML += '<tbody>';
+        for (let i = 1; i <= 10; i++) {
+            tableHTML += '<tr><th>' + i + '</th>';
+
+            for (let j = 1; j <= 10; j++) {
+                tableHTML += '<td>' + (i * j) + '</td>';
+            }
+            tableHTML += '</tr>';
+        }
+        tableHTML += '</tbody>';
+
+        document.getElementById('mult').innerHTML = tableHTML;
+    })();
 </script>
 </body>
 </html>
