@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>laba-6-1</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            margin: 20px;
+        }
+        .container {
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            border: 2px solid #007BFF;
+            border-radius: 8px;
+            padding: 10px;
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .box {
+            width: 40%;
+            border: 1px dashed #007BFF;
+            border-radius: 5px;
+            padding: 10px;
+            min-height: 150px;
+            background-color: #f9f9f9;
+            transition: background-color 0.3s;
+        }
+        .box:hover {
+            background-color: #e6f0ff;
+        }
+        .draggable {
+            margin: 5px 0;
+            padding: 10px;
+            background-color: #007BFF;
+            color: white;
+            border-radius: 4px;
+            cursor: move;
+            transition: background-color 0.3s;
+        }
+        .draggable:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="box" id="box1">
+        <div class="draggable" id="text1" draggable="true">Text 1</div>
+        <div class="draggable" id="text2" draggable="true">Text 2</div>
+        <div class="draggable" id="text3" draggable="true">Text 3</div>
+    </div>
+    <div class="box" id="box2">
+        <p>Перетащите текст сюда</p>
+    </div>
+</div>
+
+<script>
+    (function () {
+        "use strict";
+
+        function allowDrop(event) {
+            event.preventDefault();
+        }
+
+        function drag(event) {
+            event.dataTransfer.setData("text", event.target.id);
+        }
+
+        function drop(event) {
+            event.preventDefault();
+            const data = event.dataTransfer.getData("text");
+            const draggableElement = document.getElementById(data);
+            event.target.appendChild(draggableElement);
+        }
+
+        const boxes = document.querySelectorAll('.box');
+        boxes.forEach(box => {
+            box.addEventListener('dragover', allowDrop);
+            box.addEventListener('drop', drop);
+        });
+
+        const draggableItems = document.querySelectorAll('.draggable');
+        draggableItems.forEach(item => {
+            item.addEventListener('dragstart', drag);
+        });
+
+    }());
+</script>
+
+</body>
+</html>
