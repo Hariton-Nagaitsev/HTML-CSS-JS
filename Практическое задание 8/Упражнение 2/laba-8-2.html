@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>laba-8-2</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        #block_1 {
+            transition: color 0.3s, font-size 0.3s;
+        }
+        #block_2 {
+            transition: font-weight 0.3s, border 0.3s;
+            padding: 5px;
+        }
+        a {
+            color: black;
+            transition: color 0.3s;
+        }
+    </style>
+</head>
+<body>
+    <button id="button_1">Изменить текст 1</button>
+    <p id="block_1">Этот текст изменит цвет и размер при нажатии кнопки.</p>
+
+    <a href="#" id="link">Наведи на меня!</a>
+
+    <button id="button_2">Изменить текст 2</button>
+    <p id="block_2">Этот текст изменит стиль при двойном щелчке кнопки.</p>
+
+    <script>
+        (function() {
+            'use strict';
+
+            $(document).ready(function() {
+                $('#button_1').click(function() {
+                    $('#block_1').css({
+                        'color': 'blue',
+                        'font-size': '24px'
+                    });
+                });
+
+                $('#link').hover(
+                    function() {
+                        $(this).css('color', 'red');
+                    },
+                    function() {
+                        $(this).css('color', '');
+                    }
+                );
+
+                $('#block_1').on('select', function() {
+                    $(this).css({
+                        'color': 'purple',
+                        'font-size': '18px'
+                    });
+                });
+
+                $('#button_2').dblclick(function() {
+                    $('#block_2').css({
+                        'font-weight': 'bold',
+                        'font-family': 'Verdana',
+                        'color': 'green',
+                        'border': '1px solid red'
+                    });
+                });
+            });
+        })();
+    </script>
+</body>
+</html>

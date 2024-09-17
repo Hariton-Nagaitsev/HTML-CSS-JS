@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>laba-8-1</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+        #fut {
+            background-color: lightblue;
+        }
+    </style>
+<script>
+    (function() {
+        'use strict';
+
+        $(document).ready(function() {
+            $('#meadow').css({'color': 'green', 'font-size': '12pt'});
+            $('.rainbow').css({'color': 'green', 'font-size': '12pt'});
+            $('#fut #future').css({'color': 'purple', 'font-size': '12pt'});
+            $('[set]').css({'color': 'orange', 'font-size': '12pt'});
+            $('[last=code]').css({'color': 'orange', 'font-size': '12pt'});
+        });
+    })();
+</script>
+</head>
+<body>
+
+    <div id="meadow">Это (meadow)</div>
+    <div class="rainbow">Это (rainbow)</div>
+    
+    <div id="fut">
+        <div id="future">Это (future)</div>
+    </div>
+    
+    <div set="true">Это set</div>
+    <div last="code">Это last=code</div>
+
+</body>
+</html>

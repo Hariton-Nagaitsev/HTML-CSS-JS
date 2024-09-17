@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>laba-8-3</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        #block_1 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+        #block_2 {
+            transition: opacity 3s ease;
+            opacity: 1;
+            color: #333;
+        }
+        #block_3 {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            transition: height 7s ease;
+        }
+        #movingSquare {
+            width: 50px;
+            height: 50px;
+            background-color: blue;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        button {
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <button id="button_1">Скрыть абзац 1</button>
+    <button id="button_2">Показать абзац 1</button>
+    <p id="block_1">Это абзац 1.</p>
+
+    <p id="block_2">Наведите курсор на этот абзац для эффекта прозрачности.</p>
+
+    <button id="button_3">Уменьшить высоту блока 3</button>
+    <button id="button_4">Вернуть высоту блока 3</button>
+    <div id="block_3"></div>
+
+    <button id="button_5">Двигать квадрат</button>
+    <div id="movingSquare"></div>
+
+    <script>
+        (function() {
+            "use strict";
+
+            $(document).ready(function () {
+                $('#button_1').click(function () {
+                    $('#block_1').fadeOut();
+                });
+                $('#button_2').click(function () {
+                    $('#block_1').fadeIn();
+                });
+
+                $('#block_2').hover(
+                    function () {
+                        $(this).stop().animate({ opacity: 0.5 }, 3000);
+                    },
+                    function () {
+                        $(this).stop().animate({ opacity: 1 }, 3000);
+                    }
+                );
+
+                $('#button_3').click(function () {
+                    $('#block_3').animate({ height: '0px' }, 5000);
+                });
+                $('#button_4').click(function () {
+                    $('#block_3').animate({ height: '100px' }, 7000);
+                });
+
+                $('#button_5').click(function () {
+                    $('#movingSquare').animate({ top: 0, left: 0 }, 1000)
+                        .animate({ top: 0, left: $(window).width() - 50 }, 1000)
+                        .animate({ top: $(window).height() - 50, left: $(window).width() - 50 }, 1000)
+                        .animate({ top: $(window).height() - 50, left: 0 }, 1000)
+                        .animate({ top: 0, left: 0 }, 1000);
+                });
+            });
+        })();
+    </script>
+</body>
+</html>
