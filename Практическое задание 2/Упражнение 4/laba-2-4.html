@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>laba-2-4</title>
+    <style>
+        body {
+            margin: 20px;
+        }
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Форма регистрации</h1>
+<form id="registrationForm" method="POST" action="your-server-endpoint">
+    <label for="username">Логин:</label><br>
+    <input type="text" id="username" name="username" required><br><br>
+
+    <label for="password">Пароль:</label><br>
+    <input type="password" id="password" name="password" required minlength="6" maxlength="12"><br><br>
+
+    <label for="confirmPassword">Проверка пароля:</label><br>
+    <input type="password" id="confirmPassword" name="confirmPassword" required><br><br>
+
+    <label for="email">E-mail:</label><br>
+    <input type="text" id="email" name="email" required><br><br>
+
+    <button type="submit">Отправить</button>
+</form>
+
+<div id="errorMessages" class="error"></div>
+
+<script>
+    (function () {
+        "use strict";
+
+        document.getElementById('registrationForm').onsubmit = function(event) {
+            event.preventDefault();
+
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            const email = document.getElementById('email').value;
+            const errorMessages = [];
+
+            if (!username || !password || !confirmPassword || !email) {
+                errorMessages.push('Все поля должны быть заполнены.');
+            }
+
+            if (password.length < 6 || password.length > 12) {
+                errorMessages.push('Пароль должен содержать от 6 до 12 символов.');
+            }
+
+            if (password !== confirmPassword) {
+                errorMessages.push('Пароли не совпадают.');
+            }
+
+            if (!email.includes('@')) {
+                errorMessages.push('E-mail должен содержать символ @.');
+            }
+
+            const errorDiv = document.getElementById('errorMessages');
+            errorDiv.innerHTML = '';
+
+            if (errorMessages.length > 0) {
+                errorMessages.forEach(function(message) {
+                    const p = document.createElement('p');
+                    p.textContent = message;
+                    errorDiv.appendChild(p);
+                });
+            } else {
+                alert('Форма успешно отправлена!');
+            }
+        };
+    })();
+</script>
+
+</body>
+</html>

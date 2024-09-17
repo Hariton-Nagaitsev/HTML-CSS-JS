@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>laba-2-2</title>
+    <style>
+        #text {
+            font-size: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <p id="text">Какой то текст</p>
+    <a href="#" id="changeText">Навести курсор, изменить текст</a>
+
+    <script>
+        (function() {
+            "use strict";
+
+            function ChangeStyle() {
+                const element = document.getElementById("text");
+                element.style.color = "green";
+                element.style.fontSize = "60px";
+                element.style.textDecoration = "underline";
+                element.style.fontWeight = "bold";
+            }
+
+            const link = document.getElementById("changeStyleLink");
+            link.addEventListener("mouseover", ChangeStyle);
+        })();
+    </script>
+</body>
+</html>

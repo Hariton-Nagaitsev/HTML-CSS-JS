@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 2 - Exercise 1</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        img {
+            transition: transform 0.5s ease;
+        }
+    </style>
+</head>
+<body>
+
+<img id="imgCat" src="cat.jpg" alt="Cat" style="width: 400px; cursor: pointer;">
+
+<script>
+    (function () {
+        "use strict";
+        const img = document.getElementById("imgCat");
+        var isEnlarged = false;
+
+        img.addEventListener("click", function() {
+            if (isEnlarged) {
+                img.style.transform = "scale(1)";
+            } else {
+                img.style.transform = "scale(2)";
+            }
+            isEnlarged = !isEnlarged;
+        });
+    }());
+</script>
+</body>
+</html>

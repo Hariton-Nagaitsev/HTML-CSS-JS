@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>laba-2-3</title>
+    <style>
+        body {
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<a href="#" id="open">Новое окно</a>
+
+<script>
+    (function () {
+        "use strict";
+
+        document.getElementById('open').onclick = function(event) {
+            event.preventDefault();
+
+            const width = 300;
+            const height = 400;
+            const features = `
+                menubar=yes,
+                location=yes,
+                resizable=yes,
+                scrollbars=yes,
+                status=yes,
+                toolbar=yes
+            `;
+
+            window.open('about:blank', 'Новое окно', `width=${width},height=${height},${features}`);
+        };
+    }());
+</script>
+
+</body>
+</html>
