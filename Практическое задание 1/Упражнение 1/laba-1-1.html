@@ -5,15 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>laba-1-1</title>
     <script>
+        (function() {
+            'use strict';
+
             var str1 = "Строка 1 ";
             var str2 = "Строка 2";
             var conc = str1 + str2;
             alert("Две строки: " + conc);
-			
+            
             var num = 3.14;
             var FF = parseInt("FF", 16);
-	    var mult = num * FF;
-	    alert("Число 3.14 и FF: " + mult);
+            var mult = num * FF;
+            alert("Число 3.14 и FF: " + mult);
+        })();
     </script>
 </head>
 <body>
