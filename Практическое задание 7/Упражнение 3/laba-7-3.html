@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>laba-7-3</title>
+</head>
+<body>
+    <h1>Пример использования Web Workers</h1>
+    <button id="startWorker">Запуск Worker</button>
+    <div id="result"></div>
+
+    <script>
+        (function() {
+            "use strict";
+
+            const resultDiv = document.getElementById('result');
+            let worker;
+
+            document.getElementById('startWorker').onclick = () => {
+                if (typeof Worker !== 'undefined') {
+                    worker = new Worker('worker.js');
+
+                    worker.onmessage = function(event) {
+                        resultDiv.textContent = `Результат: ${event.data}`;
+                    };
+
+                    worker.onerror = function(error) {
+                        resultDiv.textContent = `Ошибка: ${error.message}`;
+                    };
+
+                    worker.postMessage('Начать обработку');
+                } else {
+                    resultDiv.textContent = 'Ваш браузер не поддерживает Web Workers.';
+                }
+            };
+        })();
+    </script>
+</body>
+</html>

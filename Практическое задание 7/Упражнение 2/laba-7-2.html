@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>laba-7-2</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        #messages {
+            border: 1px solid #ccc;
+            height: 300px;
+            overflow-y: scroll;
+            margin-bottom: 10px;
+            padding: 5px;
+        }
+        #input {
+            width: 70%;
+        }
+    </style>
+</head>
+<body>
+<h1>Обмен сообщениями через WebSocket</h1>
+<div id="messages"></div>
+<input id="input" type="text" placeholder="Введите ваше сообщение" />
+<button id="sendBtn">Отправить</button>
+
+<script>
+    (() => {
+        'use strict';
+
+        const messagesDiv = document.getElementById('messages');
+        const input = document.getElementById('input');
+        const sendBtn = document.getElementById('sendBtn');
+
+        const socket = new WebSocket('ws://localhost:8080');
+
+        socket.addEventListener('open', function () {
+            messagesDiv.innerHTML += '<div><em>Соединение установлено!</em></div>';
+        });
+
+        socket.addEventListener('message', function (event) {
+            messagesDiv.innerHTML += '<div><strong>Сервер:</strong> ' + event.data + '</div>';
+            messagesDiv.scrollTop = messagesDiv.scrollHeight;
+        });
+
+        sendBtn.addEventListener('click', function () {
+            const message = input.value;
+            if (message) {
+                socket.send(message);
+                messagesDiv.innerHTML += '<div><strong>Вы:</strong> ' + message + '</div>';
+                input.value = '';
+                messagesDiv.scrollTop = messagesDiv.scrollHeight;
+            }
+        });
+    })();
+</script>
+</body>
+</html>
