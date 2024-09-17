@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>laba5-1</title>
+    <style>
+        .required:invalid {
+            border: 2px solid red;
+        }
+        .required:valid {
+            border: 2px solid green;
+        }
+        .input-status-icon {
+            width: 12px;
+            height: 12px;
+            margin-left: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Форма</h1>
+    <p>Пожалуйста, заполните обязательные поля.</p>
+    <form id="formData">
+        <label for="userName">Имя:</label>
+        <input type="text" id="userName" class="required" required>
+        <img id="nameStatusIcon" class="input-status-icon" src="no.jpeg" alt="статус"><br><br>
+
+        <label for="userAge">Возраст:</label>
+        <input type="number" id="userAge" required>
+        <img id="ageStatusIcon" class="input-status-icon" src="no.jpeg" alt="статус"><br><br>
+
+        <label for="userEmail">E-mail:</label>
+        <input type="email" id="userEmail" class="required" required>
+        <img id="emailStatusIcon" class="input-status-icon" src="no.jpeg" alt="статус"><br><br>
+
+        <label for="userWebsite">Сайт:</label>
+        <input type="url" id="userWebsite">
+        <img id="websiteStatusIcon" class="input-status-icon" src="no.jpeg" alt="статус"><br><br>
+
+        <button type="submit">Отправить</button>
+    </form>
+
+    <script>
+        (function () {
+            "use strict";
+            const form = document.getElementById('formData');
+
+            form.addEventListener('input', function() {
+                const nameInput = document.getElementById('userName');
+                const nameStatusImg = document.getElementById('nameStatusIcon');
+                nameStatusImg.src = nameInput.validity.valid ? 'yes.jpeg' : 'no.jpeg';
+
+                const ageInput = document.getElementById('userAge');
+                const ageStatusImg = document.getElementById('ageStatusIcon');
+                ageStatusImg.src = ageInput.validity.valid ? 'yes.jpeg' : 'no.jpeg';
+
+                const emailInput = document.getElementById('userEmail');
+                const emailStatusImg = document.getElementById('emailStatusIcon');
+                emailStatusImg.src = emailInput.validity.valid ? 'yes.jpeg' : 'no.jpeg';
+
+                const websiteInput = document.getElementById('userWebsite');
+                const websiteStatusImg = document.getElementById('websiteStatusIcon');
+                websiteStatusImg.src = websiteInput.validity.valid ? 'yes.jpeg' : 'no.jpeg';
+            });
+        }());
+    </script>
+</body>
+</html>
