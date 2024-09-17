@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>laba-6-2</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        a {
+            display: block;
+            margin: 10px 0;
+            color: blue;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Динамические гиперссылки</h1>
+<a href="#" data-url="page1">Ссылка на страницу 1</a>
+<a href="#" data-url="page2">Ссылка на страницу 2</a>
+<a href="#" data-url="page3">Ссылка на страницу 3</a>
+<a href="#" data-url="page4">Ссылка на страницу 4</a>
+<a href="#" data-url="page5">Ссылка на страницу 5</a>
+
+<div id="content">
+    <h2>Содержимое страницы</h2>
+    <p>Выберите ссылку выше, чтобы загрузить содержимое.</p>
+</div>
+
+<script>
+    (function() {
+        "use strict";
+        
+        document.querySelectorAll('a[data-url]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault(); // Отмена перехода по ссылке
+                const url = this.getAttribute('data-url');
+
+                if (history.state) {
+                    history.replaceState({ page: url }, '', url);
+                } else {
+                    history.pushState({ page: url }, '', url);
+                }
+                loadContent(url);
+            });
+        });
+
+        window.addEventListener('popstate', function(event) {
+            if (event.state) {
+                loadContent(event.state.page);
+            }
+        });
+
+        function loadContent(page) {
+            const contentDiv = document.getElementById('content');
+            contentDiv.innerHTML = `<h2>Содержимое ${page}</h2><p>Это содержимое загружается для ${page}.</p>`;
+        }
+    })();
+</script>
+
+</body>
+</html>

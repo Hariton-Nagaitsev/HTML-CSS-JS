@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>laba-6-3</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        #output {
+            margin-top: 20px;
+            background: #f0f0f0;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Демонстрация Geolocation API</h1>
+<button id="getCurrentPositionBtn">Получить текущее местоположение</button>
+<button id="watchPositionBtn">Следить за местоположением</button>
+<div id="output">
+    <h2>Информация о местоположении:</h2>
+    <pre id="locationData">Местоположение не получено.</pre>
+</div>
+
+<script>
+    (function() {
+        "use strict";
+
+        document.getElementById('getCurrentPositionBtn').addEventListener('click', () => {
+            if ("geolocation" in navigator) {
+                navigator.geolocation.getCurrentPosition(
+                    (position) => {
+                        const { latitude, longitude, accuracy } = position.coords;
+                        document.getElementById('locationData').innerText = 
+                            `Широта: ${latitude}\nДолгота: ${longitude}\nТочность: ${accuracy} метров`;
+                    },
+                    (error) => {
+                        handleError(error);
+                    }
+                );
+            } else {
+                alert("Geolocation API не поддерживается этим браузером.");
+                document.getElementById('locationData').innerText = "Geolocation API не поддерживается.";
+            }
+        });
+
+        document.getElementById('watchPositionBtn').addEventListener('click', () => {
+            if ("geolocation" in navigator) {
+                navigator.geolocation.watchPosition(
+                    (position) => {
+                        const { latitude, longitude, accuracy } = position.coords;
+                        document.getElementById('locationData').innerText = 
+                            `Широта: ${latitude}\nДолгота: ${longitude}\nТочность: ${accuracy} метров`;
+                    },
+                    (error) => {
+                        handleError(error);
+                    }
+                );
+            } else {
+                alert("Geolocation API не поддерживается этим браузером.");
+                document.getElementById('locationData').innerText = "Geolocation API не поддерживается.";
+            }
+        });
+
+        function handleError(error) {
+            switch(error.code) {
+                case error.PERMISSION_DENIED:
+                    alert("Пользователь отклонил запрос на определение местоположения.");
+                    break;
+                case error.POSITION_UNAVAILABLE:
+                    alert("Информация о местоположении недоступна.");
+                    break;
+                case error.TIMEOUT:
+                    alert("Запрос на определение местоположения превысил время ожидания.");
+                    break;
+                case error.UNKNOWN_ERROR:
+                    alert("Произошла неизвестная ошибка.");
+                    break;
+            }
+            document.getElementById('locationData').innerText = "Ошибка при получении местоположения.";
+        }
+
+    })();
+</script>
+
+</body>
+</html>
