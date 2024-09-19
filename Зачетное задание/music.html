@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music</title>
+    <link rel="stylesheet" href="static/css/styles/index.css">
+    <link rel="stylesheet" href="static/css/styles/music.css">
+</head>
+<body>
+    <header>
+        <nav class="head">
+            <ul>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="music.html">Музыка</a></li>
+                <li><a href="chat.html">Чат</a></li>
+                <li><a href="articles.html">Статьи</a></li>
+                <li><a href="login.html">Авторизация</a></li>
+                <input type="text" placeholder="Поиск">
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="music">
+            <div class="music-section" data-toggle="list1">
+                <h2>Рок</h2>
+                <div id="list1" class="music-list">
+                    <ul>
+                        <li class="music-item">
+                            <span class="track-name">System of a Down - Lonely Day</span>
+                            <audio id="audio1" data-next="audio2" controls>
+                                <source src="static/path/rock/Lonely_Day.mp3" type="audio/mpeg">
+                            </audio>
+                            <a href="articles/article1.html" class="article-link">Читать статью</a>
+                        </li>
+                        <li class="music-item">
+                            <span class="track-name">AC-DC - Thunderstruck</span>
+                            <audio id="audio2" data-next="audio3" controls>
+                                <source src="static/path/rock/AC-DC - Thunderstruck.mp3" type="audio/mpeg">
+                            </audio>
+                            <a href="articles/article2.html" class="article-link">Читать статью</a>
+                        </li>
+                        <li class="music-item">
+                            <span class="track-name">Skillet - Monster</span>
+                            <audio id="audio3" controls>
+                                <source src="static/path/rock/Skillet - Monster.mp3" type="audio/mpeg">
+                            </audio>
+                            <a href="articles/article3.html" class="article-link">Читать статью</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="music-section" data-toggle="list2">
+                <h2>Реп</h2>
+                <div id="list2" class="music-list">
+                    <ul>
+                        <li class="music-item">
+                            <span class="track-name">Eminem - Survival</span>
+                            <audio id="audio4" data-next="audio5" controls>
+                                <source src="static/path/rep/Eminem - Survival.mp3" type="audio/mpeg">
+                            </audio>
+                            <a href="articles/article4.html" class="article-link">Читать статью</a>
+                        </li>
+                        <li class="music-item">
+                            <span class="track-name">Dr. Dre - Still D.R.E. Feat. Snoop Dogg</span>
+                            <audio id="audio5" data-next="audio6" controls>
+                                <source src="static/path/rep/Dr. Dre - Still D.R.E. Feat. Snoop Dogg.mp3" type="audio/mpeg">
+                            </audio>
+                            <a href="articles/article5.html" class="article-link">Читать статью</a>
+                        </li>
+                        <li class="music-item">
+                            <span class="track-name">6ix9ine - Billy</span>
+                            <audio id="audio6" controls>
+                                <source src="static/path/rep/6ix9ine - Billy.mp3" type="audio/mpeg">
+                            </audio>
+                            <a href="articles/article6.html" class="article-link">Читать статью</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="music-section" data-toggle="list3">
+                <h2>Классическая музыка</h2>
+                <div id="list3" class="music-list">
+                    <ul>
+                        <li class="music-item">
+                            <span class="track-name">Vivaldi - Oboe Concerto am, RV 461 [Pierlot, Scimone] (3) Allegro</span>
+                            <audio id="audio7" data-next="audio8" controls>
+                                <source src="static/path/classic/Vivaldi - Oboe Concerto am, RV 461 [Pierlot, Scimone] (3) Allegro.mp3" type="audio/mpeg">
+                            </audio>
+                            <a href="articles/article7.html" class="article-link">Читать статью</a>
+                        </li>
+                        <li class="music-item">
+                            <span class="track-name">Rafael Krux - Dramatic Baroque Violin Concerto</span>
+                            <audio id="audio8" data-next="audio9" controls>
+                                <source src="static/path/classic/Rafael Krux Dramatic Baroque Violin Concerto.mp3" type="audio/mpeg">
+                            </audio>
+                            <a href="articles/article8.html" class="article-link">Читать статью</a>
+                        </li>
+                        <li class="music-item">
+                            <span class="track-name">Wednesday Cello (Paint it black)</span>
+                            <audio id="audio9" controls>
+                                <source src="static/path/classic/adhes-wednesday-cello.mp3" type="audio/mpeg">
+                            </audio>
+                            <a href="articles/article9.html" class="article-link">Читать статью</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <p>&copy; 2024 Music and Chat. Все права защищены.</p>
+            <ul class="footer-links">
+                <li><a href="privacy.html">Политика конфиденциальности</a></li>
+                <li><a href="terms.html">Условия использования</a></li>
+                <li><a href="contact.html">Контакты</a></li>
+            </ul>
+            <div class="social-media">
+                <a href="#"><img src="static/img/social/facebook.png" alt="Facebook"></a>
+                <a href="#"><img src="static/img/social/telegram.png" alt="Telegram"></a>
+                <a href="#"><img src="static/img/social/instagram.png" alt="Instagram"></a>
+                <a href="#"><img src="static/img/social/twitter.png" alt="Twitter"></a>
+                <a href="#"><img src="static/img/social/youtube.png" alt="YouTube"></a>
+            </div>
+        </div>
+    </footer>
+    <script src="static/js/scripts/music_scripts.js"></script>
+</body>
+</html>
